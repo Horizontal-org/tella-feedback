@@ -5,12 +5,11 @@ import (
 
     "github.com/gin-gonic/gin"
 		"github.com/Horizontal-org/tella-feedback/pkg/common/models"
-
 )
 
 type AddOpinionRequestBody struct {
-    Text       string `json:"text"`
-    Platform      string `json:"platform"`
+    Text       string `json:"text" binding:"required"`
+    Platform      string `json:"platform" binding:"required,oneof=IOS ANDROID WEB"`
 }
 
 func (h handler) AddOpinion(c *gin.Context) {
