@@ -4,7 +4,8 @@ import (
     "net/http"
 
     "github.com/gin-gonic/gin"
-		"github.com/Horizontal-org/tella-feedback/pkg/common/models"
+	"github.com/Horizontal-org/tella-feedback/pkg/common/models"
+    "github.com/Horizontal-org/tella-feedback/pkg/common/email"
 )
 
 type AddOpinionRequestBody struct {
@@ -30,6 +31,9 @@ func (h handler) AddOpinion(c *gin.Context) {
         c.AbortWithError(http.StatusNotFound, result.Error)
         return
     }
+
+
+    go email.ReportFeedback(h.MailDialer, &opinion)
 
     c.JSON(http.StatusCreated, &opinion)
 }

@@ -10,6 +10,7 @@ import (
 func (h handler) GetOpinion(c *gin.Context) {
     var opinions []models.Opinion
 
+
     if result := h.DB.Find(&opinions); result.Error != nil {
         c.AbortWithError(http.StatusNotFound, result.Error)
         return
