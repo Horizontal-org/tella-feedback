@@ -1,0 +1,122 @@
+basePath: /
+definitions:
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  models.Opinion:
+    description: Opinion model
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      platform:
+        type: string
+      text:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  opinions.AddOpinionRequestBody:
+    description: Create opinion request with text and platform
+    properties:
+      platform:
+        enum:
+        - IOS
+        - ANDROID
+        - WEB
+        type: string
+      text:
+        type: string
+    required:
+    - platform
+    - text
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: api.feedback.tella-app.org
+info:
+  contact:
+    name: API Support
+    url: https://wearehorizontal.org
+  description: microservice for receiving feedback about tella in all platforms
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Tella feedback
+  version: "1.0"
+paths:
+  /opinions:
+    get:
+      description: Get list of all opinions
+      parameters:
+      - description: query params
+        in: header
+        name: X-Tella-Feedback
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Opinion'
+            type: array
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Get opinions
+      tags:
+      - opinions
+    post:
+      consumes:
+      - application/json
+      description: Create new opinion and send email
+      parameters:
+      - description: query params
+        in: header
+        name: X-Tella-Feedback
+        required: true
+        type: string
+      - description: tella params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/opinions.AddOpinionRequestBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Opinion'
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      summary: Create opinion
+      tags:
+      - opinions
+schemes:
+- https
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

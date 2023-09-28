@@ -8,11 +8,19 @@ import (
     "github.com/Horizontal-org/tella-feedback/pkg/common/email"
 )
 
-type AddOpinionRequestBody struct {
-    Text       string `json:"text" binding:"required"`
-    Platform      string `json:"platform" binding:"required,oneof=IOS ANDROID WEB"`
-}
-
+// Add opinion godoc
+//	@Summary		Create opinion
+//	@Description	Create new opinion and send email
+//	@Tags			opinions
+//	@Accept			json
+//	@Produce		json
+//	@Param			X-Tella-Feedback	header		string							required	"query params"
+//	@Param			request				body		opinions.AddOpinionRequestBody	true		"tella params"
+//	@Success		200					{object}	models.Opinion
+//	@Failure		400					
+//	@Failure		404					
+//	@Failure		500					
+//	@Router			/opinions [post]
 func (h handler) AddOpinion(c *gin.Context) {
     body := AddOpinionRequestBody{}
 
@@ -23,7 +31,6 @@ func (h handler) AddOpinion(c *gin.Context) {
     }
 
     var opinion models.Opinion
-
     opinion.Text = body.Text
     opinion.Platform = body.Platform
 
@@ -32,7 +39,7 @@ func (h handler) AddOpinion(c *gin.Context) {
         return
     }
 
-
+    // magic line
     go email.ReportFeedback(h.MailDialer, &opinion)
 
     c.JSON(http.StatusCreated, &opinion)
