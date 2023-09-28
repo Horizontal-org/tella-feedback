@@ -13,7 +13,7 @@ import (
 //	@Description	Get list of all opinions
 //	@Tags			opinions
 //	@Produce		json
-//	@Param			X-Tella-Feedback	header	string	required	"query params"
+//	@Param			X-Tella-Platform	header	string	required	"query params"
 //	@Success		200					{array}	models.Opinion
 //	@Failure		400					
 //	@Failure		404					

@@ -37,7 +37,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "query params",
-                        "name": "X-Tella-Feedback",
+                        "name": "X-Tella-Platform",
                         "in": "header",
                         "required": true
                     }
@@ -79,7 +79,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "query params",
-                        "name": "X-Tella-Feedback",
+                        "name": "X-Tella-Platform",
                         "in": "header",
                         "required": true
                     },

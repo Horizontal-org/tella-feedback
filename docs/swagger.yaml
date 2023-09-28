@@ -61,7 +61,7 @@ paths:
       parameters:
       - description: query params
         in: header
-        name: X-Tella-Feedback
+        name: X-Tella-Platform
         required: true
         type: string
       produces:
@@ -89,7 +89,7 @@ paths:
       parameters:
       - description: query params
         in: header
-        name: X-Tella-Feedback
+        name: X-Tella-Platform
         required: true
         type: string
       - description: tella params

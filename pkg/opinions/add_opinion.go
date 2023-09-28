@@ -14,7 +14,7 @@ import (
 //	@Tags			opinions
 //	@Accept			json
 //	@Produce		json
-//	@Param			X-Tella-Feedback	header		string							required	"query params"
+//	@Param			X-Tella-Platform	header		string							required	"query params"
 //	@Param			request				body		opinions.AddOpinionRequestBody	true		"tella params"
 //	@Success		200					{object}	models.Opinion
 //	@Failure		400					
