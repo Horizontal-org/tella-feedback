@@ -10,3 +10,7 @@ use docker implementation `docker pull quay.io/goswagger/swagger`
 using https://github.com/swaggo/swag#getting-started
 
 `swag init --parseDependency --parseInternal` 
+
+### Deploy
+
+`go get`
