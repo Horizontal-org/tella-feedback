@@ -19,5 +19,5 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB, mail *gomail.Dialer) {
 
     routes := r.Group("/opinions")
     routes.POST("/", h.AddOpinion)
-    routes.GET("/", h.GetOpinion)
+    // routes.GET("/", h.GetOpinion)
 }

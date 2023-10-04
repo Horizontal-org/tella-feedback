@@ -56,32 +56,6 @@ info:
   version: "1.0"
 paths:
   /opinions:
-    get:
-      description: Get list of all opinions
-      parameters:
-      - description: query params
-        in: header
-        name: X-Tella-Platform
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/models.Opinion'
-            type: array
-        "400":
-          description: Bad Request
-        "404":
-          description: Not Found
-        "500":
-          description: Internal Server Error
-      summary: Get opinions
-      tags:
-      - opinions
     post:
       consumes:
       - application/json

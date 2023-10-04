@@ -24,45 +24,6 @@ const docTemplate = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/opinions": {
-            "get": {
-                "description": "Get list of all opinions",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "opinions"
-                ],
-                "summary": "Get opinions",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "query params",
-                        "name": "X-Tella-Platform",
-                        "in": "header",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.Opinion"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "500": {
-                        "description": "Internal Server Error"
-                    }
-                }
-            },
             "post": {
                 "description": "Create new opinion and send email",
                 "consumes": [
