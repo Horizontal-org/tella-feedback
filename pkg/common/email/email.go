@@ -52,7 +52,7 @@ func ReportFeedback(dialer *gomail.Dialer, opinion *models.Opinion) {
 	log.Println("Sending")
 	m := gomail.NewMessage()
 	m.SetHeader("From", "noreply@support.tella-app.org")
-	m.SetHeader("To", "feedback@tella-app.org")
+	m.SetHeader("To", "contact@tella-app.org")
 	m.SetHeader("Subject", "New feedback")
 	m.SetBody("text/html", result)
 
