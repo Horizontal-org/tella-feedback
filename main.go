@@ -39,14 +39,15 @@ func main() {
     h := db.Init(dbUrl)
     m := email.Init()
 
-    r.Use(middleware.CheckHeader())
-
+    
     r.GET("/", func(c *gin.Context) {
-        c.JSON(200, gin.H{
-            "hello": "world",
-        })
+      c.JSON(200, gin.H{
+        "hello": "world",
+      })
     })
-
+    
+    r.Use(middleware.CheckHeader())
+    
     // REGISTER ROUTES 
 		opinions.RegisterRoutes(r, h, m)
 
